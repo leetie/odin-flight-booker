@@ -1,0 +1,10 @@
+<h1>Airport#index</h1>
+<p>Find me in app/views/airport/index.html.erb</p>
+
+<%= options_from_collection_for_select(Airport.all, :id, :name) %>
+
+<%= form_with(model: @flight, method: "get") do |airport_form| %>
+  <%= airport_form.collection_select(:id, Airport.all, :id, :name) %>
+  <%= airport_form.collection_select(:id, Airport.all, :id, :name) %>
+  <%= airport_form.submit("Go") %>
+<% end %>

@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_05_20_010557) do
   end
 
   create_table "flights", force: :cascade do |t|
-    t.string "name"
     t.date "date"
   end
 

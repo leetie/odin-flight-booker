@@ -1,0 +1,35 @@
+<%# route to controller action that renders flights#index again with @results %>
+
+<%= form_with(url: "flights#index", method: "get" ) do |airport_form| %>
+  <%= airport_form.label(:options, :from) %>
+  <%= airport_form.collection_select(:from, Airport.all, :id, :name) %>
+  <%= airport_form.collection_select(:to, Airport.all, :id, :name) %>
+  <%= airport_form.submit("Go") %>
+<% end %>
+
+<%= form_with(url: "flights#index", method: "get") do %>
+  <%= select_tag(:from, options_for_select(@airport_options), name: "hello") %>
+  <%= submit_tag("go") %>
+<% end %>
+
+<p>New stuff</p>
+
+
+
+<p>More new stuff</p>
+  <%= form_with(url: '/flights', method: 'get') do %>
+    <%= label_tag(:from, "from") %>
+    <%= select_tag(:from, options_for_select(@airport_options), name: 'from') %>
+    <%= label_tag(:to, "to") %>
+    <%= select_tag(:from, options_for_select(@airport_options), name: 'to') %>
+    <%= submit_tag("search") %>
+  <% end %>
+
+<% if @selected_flights %>
+  <%= @selected_flights.each do |f| %>
+    <%= f.date %>
+  <% end %>
+<% end %>
+
+
+<%# populate dropdown with flights that match to and from criteria %>
