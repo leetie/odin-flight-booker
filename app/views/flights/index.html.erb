@@ -1,4 +1,4 @@
-<%# route to controller action that renders flights#index again with @results %>
+
 
 <%= form_with(url: "flights#index", method: "get" ) do |airport_form| %>
   <%= airport_form.label(:options, :from) %>
@@ -21,15 +21,26 @@
     <%= label_tag(:from, "from") %>
     <%= select_tag(:from, options_for_select(@airport_options), name: 'from') %>
     <%= label_tag(:to, "to") %>
-    <%= select_tag(:from, options_for_select(@airport_options), name: 'to') %>
+    <%= select_tag(:to, options_for_select(@airport_options), name: 'to') %>
     <%= submit_tag("search") %>
   <% end %>
 
+<%# rendering new page after rendering the one with the correct @selected_flights instance variable??? google rails rendering %>
 <% if @selected_flights %>
-  <%= @selected_flights.each do |f| %>
-    <%= f.date %>
-  <% end %>
+  <%= @selected_flights %>      
+  <% STDOUT.puts "debugging in the view with stdout "%>
+  <p>whats the deal with erb?</p>
+<% else %>
+  <% STDOUT.puts "in the else condition"%>
+  <%= "in else condition, @selected_flights == nil"%>
 <% end %>
 
 
-<%# populate dropdown with flights that match to and from criteria %>
+<%# dropdown with results %>
+<% if @flight_options %>
+  <%= form_with(url: '/flights', method: 'get') do %>
+    <%= label_tag(:selected_flight) %>
+    <%= select_tag(:selected_flight, options_for_select(@flight_options), name: "selected_flight") %>
+    <%= submit_tag("Choose")%>
+  <% end %>
+<% end %>

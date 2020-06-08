@@ -25,7 +25,7 @@ Airport.create(name: "DXB")
 
 
 #generate flights with random dates
-20.times do |i|
+55.times do |i|
   Flight.create(date: Date.new(
     2020, rand(6..12),
     rand(1..30)
@@ -34,7 +34,7 @@ end
 
 
 #assign flights to random to/from airports
-20.times do |i|
+55.times do |i|
   f = Flight.find(i+1)
   rand_to_airport = rand(1..(Airport.count))
   f.to << Airport.find(rand_to_airport)
