@@ -14,20 +14,15 @@ class FlightsController < ApplicationController
           end
           @selected_flights << f
         end
+        if @selected_flights != nil
+          #make @flight_options for dropdown select
+          @flight_options = @selected_flights.map { |f| [f.date, f.id] }
+          puts @flight_options
+        end
       end
       puts "@selected flights are #{@selected_flights}"
-<<<<<<< HEAD
-      @flight_options = @selected_flights.map { |f| [f.date, f.id] }
-      puts @flight_options
     end
-    #make @flight_options for dropdown select
-    
-=======
-    end
-    #make @flight_options for dropdown select
-    @flight_options = @selected_flights.map { |f| [f.date, f.id] }
-    puts @flight_options
->>>>>>> e365d77698c1c4890bfa07f79ec77e8038d2c6d8
+
   end
           
 

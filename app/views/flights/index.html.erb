@@ -1,22 +1,4 @@
 
-
-<%= form_with(url: "flights#index", method: "get" ) do |airport_form| %>
-  <%= airport_form.label(:options, :from) %>
-  <%= airport_form.collection_select(:from, Airport.all, :id, :name) %>
-  <%= airport_form.collection_select(:to, Airport.all, :id, :name) %>
-  <%= airport_form.submit("Go") %>
-<% end %>
-
-<%= form_with(url: "flights#index", method: "get") do %>
-  <%= select_tag(:from, options_for_select(@airport_options), name: "hello") %>
-  <%= submit_tag("go") %>
-<% end %>
-
-<p>New stuff</p>
-
-
-
-<p>More new stuff</p>
   <%= form_with(url: '/flights', method: 'get') do %>
     <%= label_tag(:from, "from") %>
     <%= select_tag(:from, options_for_select(@airport_options), name: 'from') %>
@@ -29,7 +11,6 @@
 <% if @selected_flights %>
   <%= @selected_flights %>      
   <% STDOUT.puts "debugging in the view with stdout "%>
-  <p>whats the deal with erb?</p>
 <% else %>
   <% STDOUT.puts "in the else condition"%>
   <%= "in else condition, @selected_flights == nil"%>
@@ -40,7 +21,7 @@
 <% if @flight_options %>
   <%= form_with(url: '/flights', method: 'get') do %>
     <%= label_tag(:selected_flight) %>
-    <%= select_tag(:selected_flight, options_for_select(@flight_options), name: "selected_flight", value: "ayayay") %>
+    <%= select_tag(:selected_flight, options_for_select(@flight_options), name: "selected_flight") %>
     <%= submit_tag("Choose")%>
   <% end %>
 <% end %>

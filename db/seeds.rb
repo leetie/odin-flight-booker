@@ -11,21 +11,17 @@ system 'rails db:migrate'
 # Flight.destroy_all
 
 #airports
-Airport.create(name: "SFO")
 Airport.create(name: "NYC")
 Airport.create(name: "JFK")
 Airport.create(name: "BOS")
 Airport.create(name: "LAX")
-Airport.create(name: "JAX")
-Airport.create(name: "DFW")
 Airport.create(name: "DEN")
 Airport.create(name: "IVO")
 Airport.create(name: "ATL")
-Airport.create(name: "DXB")
 
 
 #generate flights with random dates
-55.times do |i|
+120.times do |i|
   Flight.create(date: Date.new(
     2020, rand(6..12),
     rand(1..30)
@@ -34,10 +30,11 @@ end
 
 
 #assign flights to random to/from airports
-55.times do |i|
+120.times do |i|
   f = Flight.find(i+1)
   rand_to_airport = rand(1..(Airport.count))
   f.to << Airport.find(rand_to_airport)
+  f.to_id = f.to.first.id
   #until rand_from_airport != rand_to_airport, reroll 
   rand_from_airport = rand_to_airport
   while rand_from_airport == rand_to_airport
@@ -45,6 +42,8 @@ end
   end
   #assign new value that is not equal to the to_airport to the from_airport
   f.from << Airport.find(rand_from_airport)
+  f.from_id = f.from.first.id
+  f.save
 end
 
 

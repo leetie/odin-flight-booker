@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2020_05_20_010557) do
 
   create_table "flights", force: :cascade do |t|
     t.date "date"
+    t.integer "to_id"
+    t.integer "from_id"
   end
 
 end
