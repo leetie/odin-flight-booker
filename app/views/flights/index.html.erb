@@ -4,23 +4,25 @@
     <%= select_tag(:from, options_for_select(@airport_options), name: 'from') %>
     <%= label_tag(:to, "to") %>
     <%= select_tag(:to, options_for_select(@airport_options), name: 'to') %>
+    <%= date_select("selected_date", {discard_year: true}) %> <br>
+    <%= label_tag(:passengers, "passengers") %>
+    <%= select_tag(:passengers, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4]]), name: "passengers") %>
     <%= submit_tag("search") %>
   <% end %>
 
 <%# rendering new page after rendering the one with the correct @selected_flights instance variable??? google rails rendering %>
 <% if @selected_flights %>
-  <%= @selected_flights %>      
-  <% STDOUT.puts "debugging in the view with stdout "%>
-<% else %>
-  <% STDOUT.puts "in the else condition"%>
-  <%= "in else condition, @selected_flights == nil"%>
+  <%= @selected_flights.each do |f| %>      
+    <%= f.date %>
+    <%= f.from.first.name %><br>
+  <% end %>
 <% end %>
 
 
 <%# dropdown with results %>
 <% if @flight_options %>
   <%= form_with(url: '/flights', method: 'get') do %>
-    <%= label_tag(:selected_flight) %>
+    <%= label_tag(:selected_flight, "Available Flights") %>
     <%= select_tag(:selected_flight, options_for_select(@flight_options), name: "selected_flight") %>
     <%= submit_tag("Choose")%>
   <% end %>
