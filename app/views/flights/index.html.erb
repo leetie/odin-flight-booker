@@ -10,18 +10,9 @@
     <%= submit_tag("search") %>
   <% end %>
 
-<%# rendering new page after rendering the one with the correct @selected_flights instance variable??? google rails rendering %>
-<% if @selected_flights %>
-  <%= @selected_flights.each do |f| %>      
-    <%= f.date %>
-    <%= f.from.first.name %><br>
-  <% end %>
-<% end %>
-
-
 <%# dropdown with results %>
 <% if @flight_options %>
-  <%= form_with(url: '/flights', method: 'get') do %>
+  <%= form_with(url: '/bookings#new', method: 'get') do %>
     <%= label_tag(:selected_flight, "Available Flights") %>
     <%= select_tag(:selected_flight, options_for_select(@flight_options), name: "selected_flight") %>
     <%= submit_tag("Choose")%>
