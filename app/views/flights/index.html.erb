@@ -5,14 +5,14 @@
     <%= label_tag(:to, "to") %>
     <%= select_tag(:to, options_for_select(@airport_options), name: 'to') %>
     <%= date_select("selected_date", {discard_year: true}) %> <br>
-    <%= label_tag(:passengers, "passengers") %>
-    <%= select_tag(:passengers, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4]]), name: "passengers") %>
     <%= submit_tag("search") %>
   <% end %>
 
 <%# dropdown with results %>
 <% if @flight_options %>
-  <%= form_with(url: '/bookings#new', method: 'get') do %>
+  <%= form_with(url: '/bookings/new', method: 'get') do %>
+    <%= label_tag(:passengers, "passengers") %>
+    <%= select_tag(:passengers, options_for_select(1..4), name: "passengers") %>
     <%= label_tag(:selected_flight, "Available Flights") %>
     <%= select_tag(:selected_flight, options_for_select(@flight_options), name: "selected_flight") %>
     <%= submit_tag("Choose")%>
