@@ -1,0 +1,13 @@
+<h2>Booking Information</h2>
+
+<strong><%= "Flight Information:" %></strong><br>
+  <%= "From:"%>
+  <%= Flight.find(@booking.flight_id).from.first.name %>
+  <%= "To:"%>
+  <%= Flight.find(@booking.flight_id).to.first.name %><br>
+  <%= "Date:"%>
+  <%= Flight.find(@booking.flight_id).date %><br>
+<strong><%= "Passengers:" %></strong><br>
+<% @booking.passengers.each do |p| %>
+  <%= p.name %>, <%= p.email %><br>
+<% end %>

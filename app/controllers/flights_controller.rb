@@ -26,5 +26,6 @@ class FlightsController < ApplicationController
           
 
   def create
+    
   end
 end

@@ -16,5 +16,6 @@
 
  body {
    text-align: center;
-   background-color: aqua;
+   background-color: rgb(65, 180, 180);
+   height: 100%;
  }
