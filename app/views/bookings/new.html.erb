@@ -1,16 +1,5 @@
 <h2><%= "Selecting flight from #{@flight.from.first.name} to #{@flight.to.first.name} on #{@flight.date}"%></h2>
 
-<%= form_with(model: @booking, url: "bookings#create", method: "get") do |f| %>
-  <% @num_passengers.times do |p| %>
-    <%=  "Passenger #{p+1}" %><br>
-    <%= f.label("name")%>
-    <%= f.text_field(:name) %><br>
-    <%= f.label("email") %>
-    <%= f.text_field(:email)%><br>
-  <% end %>
-  <%= f.submit %>
-<% end %>
-
 <%= form_with(model: @booking) do |f| %>
   Passengers:
   <ul>
