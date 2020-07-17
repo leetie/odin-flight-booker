@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
         end
         #add each passenger to mailer params[:passengers]
         #tell mailer to send thank you email after save
-        PassengerMailer.with(passengers: @passengers).thank_you_email.deliver_later
+        PassengerMailer.with(passengers: @passengers, flight: @booking.flight).thank_you_email.deliver_later
         format.html { redirect_to(@booking, notice: "Booking Successfully Created!") }
       else
         format.html { render action: 'new' }

@@ -1,1 +1,15 @@
-<h1>thank_you_email.html.erb</h1>
+<style>
+  body {
+    text-align: center;
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FAWzLAqLlTtQ%2Fmaxresdefault.jpg&f=1&nofb=1");+
+  }
+</style>
+
+<% @passengers.each do |p| %>
+  <h3><%= "Thank you for booking a flight, #{p[0]}!" %></h3>
+<% end %>
+
+<%= "Your flight is from #{@flight.from.first.name} to #{@flight.to.first.name} on #{@flight.date}!"%><br>
+
+<%= "If you need to cancel your booking for any reason, please contact us at support@odinflightbooker.com"%>
+
